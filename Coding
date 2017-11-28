@@ -1,0 +1,146 @@
+//Position of the controls coding for Main screen:
+
+l.setBounds(160,20,450,40);
+l.setText("QUIZ ON MEDICAL OBJECTS");
+l.setFont(new Font("Serif", Font.BOLD, 24));
+b1.setBounds(250,120,100,30);  
+b2.setBounds(250,220,100,30);  
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        f.setLayout(null);  
+        f.setLocation(100,100);  
+        //setVisible(true);  
+        f.setSize(600,800);  
+
+//Position of the controls coding for Online Test:
+
+b1=new JButton("Next");  
+       b2=new JButton("Result");  
+       b2.setEnabled(false);
+        b1.addActionListener(this);  
+        b2.addActionListener(this);  
+        f.add(b1);f.add(b2);  
+        set();
+        l1.setBounds(160,20,450,40);
+        l1.setText("QUIZ ON MEDICAL OBJECTS");
+        l1.setFont(new Font("Serif", Font.BOLD, 24));
+         l.setBounds(50,70,450,20);  
+        ImageIcon icon = new ImageIcon("D:\\lifetime.png"); 
+       lt4.setBounds(30,310,50,30);
+        lt1.setBounds(90,300,50,50);
+       lt2.setBounds(120,300,50,50);
+        lt3.setBounds(150,300,50,50);
+        lt4.setText("Ur Life");
+        lt1.setIcon(icon);
+        lt2.setIcon(icon);
+        lt3.setIcon(icon);    
+        f.add(lt1);
+        f.add(lt2);
+        f.add(lt3);
+        p.setBounds(300,70,270,270);
+        jb[0].setBounds(50,100,100,20);  
+        jb[1].setBounds(50,130,100,20);  
+        jb[2].setBounds(50,160,100,20);  
+        jb[3].setBounds(50,190,100,20);  
+        b1.setBounds(30,270,100,30);  
+        b2.setBounds(150,270,100,30);  
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        f.setLayout(null);  
+        f.setLocation(100,100);  
+        //setVisible(true);  
+        f.setSize(600,800);  
+        
+//Life time Coding:
+
+public void actionPerformed(ActionEvent e)  
+    {  
+        if(e.getSource()==b1)  
+        {  
+            if(check())  
+                count=count+1;
+            else
+            {
+                lifetime=lifetime-1;
+            
+            
+            if(lifetime==2)
+            {  lt1.setEnabled(false);
+                    try{
+                String soundName = "D:\\start.wav";
+            
+AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+Clip clip = AudioSystem.getClip();
+clip.open(audioInputStream);
+clip.start();
+            }
+            catch (LineUnavailableException a) {
+            }
+
+        catch (UnsupportedAudioFileException | IOException b) {
+
+        }
+                JOptionPane.showMessageDialog(this,"U lost one life time !!!");}
+            else if(lifetime==1)
+            { lt2.setEnabled(false); 
+            try{
+                String soundName = "D:\\start.wav";
+            
+AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+Clip clip = AudioSystem.getClip();
+clip.open(audioInputStream);
+clip.start();
+            }
+            catch (LineUnavailableException a) {
+            }
+
+        catch (UnsupportedAudioFileException | IOException b) {
+
+        }
+            JOptionPane.showMessageDialog(this,"U lost one more life time !!! ");}
+            else if(lifetime==0)
+            { lt3.setEnabled(false);  JOptionPane.showMessageDialog(this,"U lost all life times ");}
+            else
+            {
+                
+                try{
+                String soundName = "D:\\start.wav";
+            
+AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+Clip clip = AudioSystem.getClip();
+clip.open(audioInputStream);
+clip.start();
+            }
+            catch (LineUnavailableException a) {
+            }
+
+        catch (UnsupportedAudioFileException | IOException b) {
+
+        }
+                JOptionPane.showMessageDialog(this,"U lost all life times so game over");
+                JOptionPane.showMessageDialog(this,"COUNT IS "+count+ " AND UR SCORE IS "+(count*10));
+        }    //System.exit(0);
+        }
+            current++;  
+            set();    
+            if(current==4)  
+            {  
+                b1.setEnabled(false);  
+                b2.setEnabled(true);
+                b2.setText("Result");  
+            }  
+        }  
+       
+      
+        if(e.getActionCommand().equals("Result"))  
+        {  
+            if(check())  
+                count=count+1;  
+            current++;  
+            //System.out.println("correct ans="+count);  
+            if(count==5)
+            JOptionPane.showMessageDialog(this,"CONGRATS WELL DONE !!! ALL ARE CORRECT & COUNT IS "+count+ " AND UR SCORE IS "+(count*10)); 
+            else 
+              JOptionPane.showMessageDialog(this,"COUNT IS "+count+ " AND UR SCORE IS "+(count*10));   
+            System.exit(0);  
+        }  
+    }  
+
